@@ -1,9 +1,9 @@
 function Conditionmsg(props) {
-    return ( 
+    return (
         <>
-        <h1>{props.message}</h1>
+            <h1>{props.message}</h1>
         </>
-     );
+    );
 }
 
 export default Conditionmsg;
