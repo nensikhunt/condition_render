@@ -1,22 +1,26 @@
-import { useState } from "react";
+import { useState } from "react"
+import Conditionmsg from "./Conditionmsg";
 
 function Condition() {
-    const [msg,setLogin]=useState(false);
-    const userhandle=()=>{
-        setLogin(!msg);
+    const [login, setLogin] = useState(false)
+    const Login = () => {
+        setLogin(true)
     }
-    if (msg === true) {
+    const Logout = () => {
+        setLogin(false)
+    }
+    if (login === false) {
         return (
             <>
-                <h1>you're logout successfully</h1>
-                <button onClick={()=>userhandle()}>LOGIN</button>
+                <Conditionmsg message="Login Message" />
+                <button onClick={() => Login()}>Login</button>
             </>
         )
     } else {
         return (
             <>
-                <h1>you're login successfully</h1>
-                <button onClick={()=>userhandle()}>LOGIOUT</button>
+                <Conditionmsg message="Logout Message" />
+                <button onClick={() => Logout()}>Logout</button>
             </>
         )
     }
