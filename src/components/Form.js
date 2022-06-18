@@ -8,9 +8,9 @@ function Form() {
         email: "",
         password: "",
         phoneno: "",
-        address:"",
-        course:"",
-        hobby:[],
+        address: "",
+        course: "",
+        // hobby:[],
         gender: ""
     })
     const inputChange = (e) => {
@@ -40,12 +40,12 @@ function Form() {
     }
 
     // select tag change event
-    const [selectCheck,setSelectcheck]=useState([]);
-    const selectChange=(e)=>{
-        const {name,value}=e.target
+    const [selectCheck, setSelectcheck] = useState([]);
+    const selectChange = (e) => {
+        const { name, value } = e.target
         setSelectcheck({
             ...selectCheck,
-            [name]:value
+            [name]: value
         });
         setInputdata({
             ...inputData,
@@ -54,14 +54,23 @@ function Form() {
     }
 
     // check box change event
-    const [checkboxCheck,setCheckbox]=useState({
-        hobby:[]
-    })
-   const checkboxChange=(e)=>{
-    const { value, checked } = e.target;
-    const { hobby } = checkboxCheck;
-    console.log(value);
-   }
+    const hobby = [];
+    const [checkboxCheck, setCheckbox] = useState([]);
+    const [temp, setTemp] = useState([]);
+    // const checkboxChange=(e)=>{
+    // const { value, checked } = e.target;
+    // const { hobby } = checkboxCheck;
+    // if(checked){
+    //     setCheckbox({
+    //         hobby:[...hobby,value]
+    //     })
+    // }
+    const checkboxChange = (e) => {
+        const { name, value } = e.target;
+        temp.push(value);
+        setCheckbox(temp);
+        console.log(temp);
+    }
 
     // onsubmit event
     const formdataSubmit = (e) => {
@@ -73,8 +82,12 @@ function Form() {
         })
         setSelectcheck({
             ...selectCheck,
-            course:"bca"
+            course: "bca"
         });
+        setCheckbox({
+            ...checkboxCheck,
+            hobby:[]
+        })
         setInputdata({
             ...inputData,
             firstname: "",
@@ -82,7 +95,7 @@ function Form() {
             email: "",
             password: "",
             phoneno: "",
-            address:"",
+            address: "",
             gender: ""
         })
         console.log(inputData);
@@ -121,9 +134,9 @@ function Form() {
                 </select><br />
 
                 Hobby:
-                <input type={"checkbox"} name={"hobby"} value={"reading"} onChange={checkboxChange} />reading
-                <input type={"checkbox"} name={"hobby"} value={"writing"} onChange={checkboxChange} />writing
-                <input type={"checkbox"} name={"hobby"} value={"singing"} onChange={checkboxChange} />singing<br />
+                <input type={"checkbox"} name={"reading"} value={"reading"} onChange={checkboxChange} />reading
+                <input type={"checkbox"} name={"writing"} value={"writing"} onChange={checkboxChange} />writing
+                <input type={"checkbox"} name={"singing"} value={"singing"} onChange={checkboxChange} />singing<br />
 
                 Gender:
                 <input type={"radio"} name={"gender"} value={"male"} onChange={radioChange} checked={radioCheck.male} />Male
