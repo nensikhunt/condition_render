@@ -86,7 +86,7 @@ function Form() {
         });
         setCheckbox({
             ...checkboxCheck,
-            hobby:[]
+            hobby: []
         })
         setInputdata({
             ...inputData,
