@@ -1,9 +1,9 @@
 import './App.css';
-// import Fetchapi from './components/Fetchapi';
+import Fetchapi from './components/Fetchapi';
 // import Condition from './components/Condition';
 // import Mailbox from './components/Mailbox';
 // import Login from './components/Login';
-import Form from './components/Form';
+// import Form from './components/Form';
 // import Currencyconvert from './components/Currencyconvert';
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
       {/* <Condition /> */}
       {/* <Mailbox /> */}
       {/* <Login /> */}
-      <Form />
-      {/* <Fetchapi /> */}
+      {/* <Form /> */}
+      <Fetchapi />
       {/* <Currencyconvert /> */}
     </>
   );
