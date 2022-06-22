@@ -10,7 +10,6 @@ function Currencyconvert() {
         setCurrency({
             ...currency,
             [e.target.name]: e.target.value
-            console.log(name);
         })
         let INR = Number(currency.inr);
         let USD = Number(currency.usd);
