@@ -1,5 +1,6 @@
 import './App.css';
-import Fetchapi from './components/Fetchapi';
+import Formvalidation from './components/Formvalidation';
+// import Fetchapi from './components/Fetchapi';
 // import Condition from './components/Condition';
 // import Mailbox from './components/Mailbox';
 // import Login from './components/Login';
@@ -9,11 +10,12 @@ import Fetchapi from './components/Fetchapi';
 function App() {
   return (
     <>
+    <Formvalidation />
       {/* <Condition /> */}
       {/* <Mailbox /> */}
       {/* <Login /> */}
       {/* <Form /> */}
-      <Fetchapi />
+      {/* <Fetchapi /> */}
       {/* <Currencyconvert /> */}
     </>
   );
