@@ -10,7 +10,11 @@ function Form() {
         phoneno: "",
         address: "",
         course: "",
-        // hobby:[],
+        hobby:{
+            reading:false,
+            writing:false,
+            singing:false
+        },
         gender: ""
     })
     const inputChange = (e) => {
@@ -40,13 +44,10 @@ function Form() {
     }
 
     // select tag change event
-    const [selectCheck, setSelectcheck] = useState([]);
+    const [selectCheck, setSelectcheck] = useState("");
     const selectChange = (e) => {
         const { name, value } = e.target
-        setSelectcheck({
-            ...selectCheck,
-            [name]: value
-        });
+        setSelectcheck(e.target.value || null)
         setInputdata({
             ...inputData,
             course: value
@@ -54,9 +55,9 @@ function Form() {
     }
 
     // check box change event
-    const hobby = [];
-    const [checkboxCheck, setCheckbox] = useState([]);
-    const [temp, setTemp] = useState([]);
+    // const hobby = [];
+    // const [checkboxCheck, setCheckbox] = useState([]);
+    // const [temp, setTemp] = useState([]);
     // const checkboxChange=(e)=>{
     // const { value, checked } = e.target;
     // const { hobby } = checkboxCheck;
@@ -65,11 +66,18 @@ function Form() {
     //         hobby:[...hobby,value]
     //     })
     // }
-    const checkboxChange = (e) => {
-        const { name, value } = e.target;
-        temp.push(value);
-        setCheckbox(temp);
-        console.log(temp);
+    // const checkboxChange = (e) => {
+    //     const { name, value } = e.target;
+    //     temp.push(value);
+    //     setCheckbox(temp);
+    //     console.log(temp);
+    // }
+
+    const checkboxChange=(e,key)=>{
+        setInputdata({
+            ...inputData,
+            hobby:{...inputData.hobby,[key]:e.target.checked}
+        })
     }
 
     // onsubmit event
@@ -82,12 +90,12 @@ function Form() {
         })
         setSelectcheck({
             ...selectCheck,
-            course: "bca"
+            course: "not select"
         });
-        setCheckbox({
-            ...checkboxCheck,
-            hobby: []
-        })
+        // setCheckbox({
+        //     ...checkboxCheck,
+        //     hobby: []
+        // })
         setInputdata({
             ...inputData,
             firstname: "",
@@ -96,6 +104,11 @@ function Form() {
             password: "",
             phoneno: "",
             address: "",
+            hobby:{
+                reading:false,
+                writing:false,
+                singing:false
+            },
             gender: ""
         })
         console.log(inputData);
@@ -122,10 +135,10 @@ function Form() {
 
                 Address:
                 <textarea name={"address"} cols={20} rows={5} value={inputData.address} onChange={inputChange} /><br />
-
+                {/* value={selectCheck.value} onChange={(e) => setSelectcheck(e.target.value || null)} */}
                 Course:
-                <select value={selectCheck.value} onChange={selectChange}>
-                    <option>select course</option>
+                <select onChange={selectChange} value={selectCheck || ""}>
+                    <option name={"course"} value={"not select"}>select course</option>
                     <option name={"course"} value={"bca"}>bca</option>
                     <option name={"course"} value={"bscit"}>bscit</option>
                     <option name={"course"} value={"btech"}>btech</option>
@@ -134,9 +147,9 @@ function Form() {
                 </select><br />
 
                 Hobby:
-                <input type={"checkbox"} name={"reading"} value={"reading"} onChange={checkboxChange} />reading
-                <input type={"checkbox"} name={"writing"} value={"writing"} onChange={checkboxChange} />writing
-                <input type={"checkbox"} name={"singing"} value={"singing"} onChange={checkboxChange} />singing<br />
+                <input type={"checkbox"} name={"hobby"} value={"reading"} onChange={(e)=>checkboxChange(e,"reading")} checked={inputData.hobby.reading} />reading
+                <input type={"checkbox"} name={"hobby"} value={"writing"} onChange={(e)=>checkboxChange(e,"writing")} checked={inputData.hobby.writing} />writing
+                <input type={"checkbox"} name={"hobby"} value={"singing"} onChange={(e)=>checkboxChange(e,"singing")} checked={inputData.hobby.singing} />singing<br />
 
                 Gender:
                 <input type={"radio"} name={"gender"} value={"male"} onChange={radioChange} checked={radioCheck.male} />Male
