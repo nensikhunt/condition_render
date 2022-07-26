@@ -4,8 +4,8 @@ import Formvalidation from './components/Formvalidation';
 // import Condition from './components/Condition';
 // import Mailbox from './components/Mailbox';
 // import Login from './components/Login';
-import Form from './components/Form';
-// import Currencyconvert from './components/Currencyconvert';
+// import Form from './components/Form';
+import Currencyconvert from './components/Currencyconvert';
 function App() {
   return (
     <>
@@ -13,9 +13,9 @@ function App() {
       {/* <Condition /> */}
       {/* <Mailbox /> */}
       {/* <Login /> */}
-      <Form />
+      {/* <Form /> */}
       {/* <Fetchapi /> */}
-      {/* <Currencyconvert /> */}
+      <Currencyconvert />
     </>
   );
 }

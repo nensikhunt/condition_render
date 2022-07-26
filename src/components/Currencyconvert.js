@@ -1,40 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
 function Currencyconvert() {
-
-    const [currency, setCurrency] = useState({
-        inr: "",
-        usd: ""
+    const [currency,setCurrency]=useState({
+        inr:"",
+        usd:""
     })
-    const currencyChnge = (e) => {
+    const count=useRef("")
+    useEffect(()=>{
+        count.current=currency
+    },[])
+    const currencyChnge=(e)=>{
         setCurrency({
             ...currency,
-            [e.target.name]: e.target.value
+            inr:e.target.value,
+            usd:currency.inr/78
         })
-        let INR = Number(currency.inr);
-        let USD = Number(currency.usd);
-        // if (Number.isNaN(INR)) {
-        //     setCurrency({
-        //         ...currency,
-        //         inr: ""
-        //     })
-        // }
-        // if (Number.isNaN(USD)) {
-        //     setCurrency({
-        //         ...currency,
-        //         usd: ""
-        //     })
-        // }
-        if (!Number.isNaN(INR)) {
-            setCurrency({
-                ...currency,
-                inr: currency.inr,
-                usd: currency.inr / 78
-            })
-        }
-        console.log(currency);
     }
-
+    console.log(currency);
     return (
         <>
             <h1>Currency Convert</h1>
